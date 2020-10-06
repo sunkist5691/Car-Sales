@@ -5,7 +5,7 @@ import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 import { connect } from 'react-redux'
-import { addFeature, removeFeature, toggleFeature } from './actions/carActions'
+import { addFeature, removeFeature } from './actions/carActions'
 
 // STEP 2 - connect the component to the redux store
 
@@ -36,7 +36,6 @@ const App = (props) => {
 const mapStateToProps = state => {
   return state
 }
-
 // connect parameters will eventually saved as 'props' of App component.
 export default connect( 
   mapStateToProps, 
@@ -54,7 +53,9 @@ export default connect(
 // and that 'dispatch' function pass that 'action' into the 'reducer' function.
 
 /* 
+
   connect(callback, object ){
     dispatch(object)
   }
+
 */

@@ -20,29 +20,35 @@ export const initialState = {
 
 export const carReducer = (state = initialState, action) => { // if the state is 'undefined', then equals to 'initialState'
 
+   // why state and initialState are same and becomes different when we click button add or remove?
+   // state and initialState are pointing same object in beginning, 
+   // but later when we click 'ADD' button, the newly created object will updated as our 'new' state
+   // which that state is now pointing to 'new' object instead initialState object. 
+
    switch(action.type){
       case 'ADD_FEATURE':
          const addItem = state.additionalFeatures.find( eachFeature => eachFeature.id === action.payload )
          return { 
             ...state, 
+            additionalPrice: state.additionalPrice + addItem.price,
             car: { 
                ...state.car, 
-               price: state.car.price + addItem.price,
                features: [ ...state.car.features, addItem],
             },
             // additionalPrice: state.additionalPrice + addItem.price
+            additionalFeatures: state.additionalFeatures.filter( eachFeature => addItem.id !== eachFeature.id)
          }
-
-      case 'REMOVE_FEATURE':
-         const removeItem = state.additionalFeatures.find( (eachFeature) => eachFeature.id === action.payload )
+         
+         case 'REMOVE_FEATURE':
+            const removeItem = state.car.features.find( (eachFeature) => eachFeature.id === action.payload )
          return {
             ...state,
+            additionalPrice: state.additionalPrice - removeItem.price,
             car: { 
                ...state.car, 
-               price: state.car.price - removeItem.price,
                features: state.car.features.filter( (eachFeature) => eachFeature.id !== removeItem.id)
             },
-            // additionalPrice: state.additionalPrice - removeItem.price
+            additionalFeatures: [ ...state.additionalFeatures, removeItem]
          }
 
       default:

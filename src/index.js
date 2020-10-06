@@ -15,7 +15,6 @@ import './styles.scss';
 // STEP 1 - create the redux store and connect it to our React app
 
 const store = createStore(carReducer)
-console.log(store.getState()) 
 // Inside of 'store' variable,
 // it stored 'initialState' object from 'carReducer'
 // Currently the state parameter from 'carReducer' is 'initialState' object 

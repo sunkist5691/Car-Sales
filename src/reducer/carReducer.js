@@ -22,8 +22,9 @@ export const carReducer = (state = initialState, action) => { // if the state is
 
    // why state and initialState are same and becomes different when we click button add or remove?
    // state and initialState are pointing same object in beginning, 
-   // but later when we click 'ADD' button, the newly created object will updated as our 'new' state
-   // which that state is now pointing to 'new' object instead initialState object. 
+   // but later when we click 'ADD' button, the newly created object will updated through carReducer as our 'new' state
+   // which that state is now pointing to 'new' object instead initialState object.
+   // That 'new' object will send it to 'props' to App component when using connect()(App) 
 
    switch(action.type){
       case 'ADD_FEATURE':
